@@ -1,44 +1,37 @@
 {
-  "name": "sails-sqlserver",
-  "version": "0.10.9",
-  "description": "Official SQL Server Adapter for Sails / Waterline",
+  "name": "waterline-sqlserver",
+  "version": "1.1.5",
+  "description": "Microsoft SQL Server adapter for waterline",
   "main": "lib/adapter.js",
   "scripts": {
-    "test": "node test/integration/runner -R spec -b"
+    "test": "./node_modules/mocha/bin/mocha test/*.js",
+    "extras": "mocha test/extra/*.js --reporter list --timeout 30000",
+    "official": "node test/integration/runner -R spec -b"
   },
   "repository": {
     "type": "git",
     "url": "git://github.com/cnect/sails-sqlserver.git"
   },
   "keywords": [
-    "cnect",
-    "sails",
-    "sails-mssql",
-    "sails-sqlserver",
+    "waterline-sqlserver",
     "sql server",
+    "waterline",
     "sqlserver",
     "microsoft",
-    "azure",
     "adapter",
-    "waterline",
-    "sails.js",
-    "mssql",
-    "sqlserver"
+    "azure",
+    "mssql"
   ],
-  "author": "Travis Webb <tjwebb@cnectdata.com>",
+  "author": "Final Development Studio <sorcery@finaldevstudio.com>",
   "contributors": [
-    "balderdashy",
-    "Stuart Welham",
-    "wxactly",
-    "Seich",
-    "tjwebb",
-    "jaredfromsubway"
+    "Santiago G. Marín <santiago@finaldevstudio.com>",
+    "Travis Webb <tjwebb@cnectdata.com>"
   ],
   "license": "MIT",
   "dependencies": {
     "captains-log": "^0.11.11",
-    "lodash": "^3.8.0",
-    "mssql": "^2.1.3",
+    "lodash": "^3.10.1",
+    "mssql": "^2.2.0",
     "underscore.string": "^3.0.0",
     "waterline-cursor": "0.0.5"
   },
@@ -48,17 +41,19 @@
     "underscore.string",
     "waterline-cursor"
   ],
-  "devDependencies": {
-    "waterline-adapter-tests": "git://github.com/tjwebb/waterline-adapter-tests",
-    "mocha": "*"
-  },
   "waterlineAdapter": {
-    "type": "sails-sqlserver",
+    "type": "waterline-sqlserver",
+    "waterlineVersion": "~0.10.0",
     "interfaces": [
       "semantic",
       "queryable",
       "associations"
-    ],
-    "waterlineVersion": "~0.10.0"
+    ]
+  },
+  "devDependencies": {
+    "waterline-adapter-tests": "git://github.com/tjwebb/waterline-adapter-tests",
+    "waterline": "^0.10.26",
+    "chai": "^3.2.0",
+    "mocha": "^2.2.5"
   }
 }
