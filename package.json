@@ -1,6 +1,6 @@
 {
-  "name": "waterline-sqlserver",
-  "version": "1.1.5",
+  "name": "sails-sqlserver",
+  "version": "0.10.9",
   "description": "Microsoft SQL Server adapter for waterline",
   "main": "lib/adapter.js",
   "scripts": {
@@ -23,8 +23,14 @@
   ],
   "author": "Final Development Studio <sorcery@finaldevstudio.com>",
   "contributors": [
+    "balderdashy",
+    "Stuart Welham",
+    "wxactly",
+    "Seich",
+    "tjwebb",
+    "jaredfromsubway",
     "Santiago G. Marín <santiago@finaldevstudio.com>",
-    "Travis Webb <tjwebb@cnectdata.com>"
+    "catdad"
   ],
   "license": "MIT",
   "dependencies": {
