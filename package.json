@@ -4,9 +4,8 @@
   "description": "Microsoft SQL Server adapter for waterline",
   "main": "lib/adapter.js",
   "scripts": {
-    "test": "./node_modules/mocha/bin/mocha test/*.js",
-    "extras": "mocha test/extra/*.js --reporter list --timeout 30000",
-    "official": "node test/integration/runner -R spec -b"
+    "test": "node test/integration/runner -R spec -b",
+    "extras": "mocha test/extra/*.js --reporter list --timeout 30000"
   },
   "repository": {
     "type": "git",
