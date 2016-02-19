@@ -1,5 +1,5 @@
 {
-  "name": "sails-sqlserver",
+  "name": "accusoft-sails-sqlserver",
   "version": "0.10.9",
   "description": "Microsoft SQL Server adapter for waterline",
   "main": "lib/adapter.js",
