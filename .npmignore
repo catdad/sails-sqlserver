@@ -1,1 +1,6 @@
 test
+credentials.json
+.idea
+nbproject
+npm-debug.log
+runner.cmd
