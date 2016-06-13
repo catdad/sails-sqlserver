@@ -1,97 +1,52 @@
-Microsoft SQL Server adapter for [waterline](https://github.com/balderdashy/waterline). Built for Microsoft SQL Server 2012 and newer.
+## <a href="http://www.cnectdata.com/"><img src="http://www.cnectdata.com/wp-content/uploads/2014/04/cnect-logo-200x57-20141118.png" height='32px' /></a> All-in-One Data Management Stack
 
-# Installing
+### sails-sqlserver
+[![NPM version][npm-image]][npm-url]
+[![Build status][ci-image]][ci-url]
+[![Dependency Status][daviddm-image]][daviddm-url]
 
+Official Microsoft SQL Server adapter for [sails.js](http://sailsjs.org/). Tested on SQL Server 2012 and 2014,
+but should support any SQL Server 2005 and newer. CI tests are run against SQL
+Server Express. Published by [c*nect](http://www.cnectdata.com/).
+
+### 1. Install
 ```sh
-$ npm install waterline-sqlserver --save
+$ npm install sails-sqlserver --save
 ```
 
-# Usage
-## Configuration and initialization
+### 2. Configure
 
+#### `config/models.js`
 ```js
-var adapter = require('waterline-sqlserver');
-var Waterline = require('waterline');
-
-var waterline = new Waterline();
-
-var config = {
-
-  adapters: {
-    default: adapter
-  },
-
-  connections: {
-    default: {
-      adapter: 'default',
-      database: 'database_name',
-      host: 'addrestohost',
-      port: 1433,
-      user: 'dbo',
-      persistent: true,
-      password: 'superlongpassword'
-    }
-  },
-
-  defaults: {
-    migrate: 'create'
-  }
-
-};
-
-waterline.initialize(config, function (err, data) {
-  if (err) {
-    throw err;
-  }
-
-  var collections = data.collections;
-  var connections = data.connections;
-});
+{
+  connection: 'sqlserver'
+}
 ```
 
-## Collection/Model definition
-
+#### `config/connections.js`
 ```js
-var bcrypt = require('bcrypt');
-
-var userModel = {
-
-  attributes: {
-
-    name: {
-      type: 'string',
-      required: true
-    },
-
-    email: {
-      type: 'string',
-      required: true,
-      unique: true,
-      size: 255 // defaults to 'max'
-    },
-
-    password: {
-      type: 'string',
-      required: true
-    },
-
-    role: {
-      model: 'role'
+{
+  sqlserver: {
+    adapter: 'sails-sqlserver',
+    user: 'cnect',
+    password: 'pass',
+    host: 'abc123.database.windows.net' // azure database
+    database: 'mydb',
+    options: {
+      encrypt: true   // use this for Azure databases
     }
-
-  },
-
-  beforeCreate: function (values, next) {
-    bcrypt.hash(values.password, 8, function (err, hash) {
-      if (err) {
-        return next(err);
-      }
-
-      values.password = hash;
-
-      next();
-    });
   }
-
-};
+}
 ```
+
+## License
+MIT
+
+[npm-image]: https://img.shields.io/npm/v/sails-sqlserver.svg?style=flat-square
+[npm-url]: https://npmjs.org/package/sails-sqlserver
+[sails-logo]: http://cdn.tjw.io/images/sails-logo.png
+[sails-url]: https://sailsjs.org
+[ci-image]: https://img.shields.io/circleci/project/cnect/sails-sqlserver/master.svg?style=flat-square
+[ci-url]: https://circleci.com/gh/cnect/sails-sqlserver
+[daviddm-image]: http://img.shields.io/david/cnect/sails-sqlserver.svg?style=flat-square
+[daviddm-url]: https://david-dm.org/cnect/sails-sqlserver
